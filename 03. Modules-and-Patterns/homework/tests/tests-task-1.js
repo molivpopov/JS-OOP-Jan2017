@@ -252,9 +252,12 @@ describe('Test for Modules and Patterns in JavaScript', function () {
         it('expect Course.submitHomework to throw if given invalid HomeworkID', function () {
             function test() {
                 var id, jsoop = Object.create(Course);
-                jsoop.init(getValidTitle(), [getValidTitle()]);
+                var p = [getValidTitle()];
+                jsoop.init(getValidTitle(), p);
                 id = jsoop.addStudent(getValidName() + ' ' + getValidName());
-                jsoop.submitHomework(id, 2);
+                console.log('throw heare: ' + Array.isArray(p));
+                var d = jsoop.submitHomework(id, 2);
+                console.log(d);
             }
 
             expect(test).to.throw();
@@ -289,11 +292,11 @@ describe('Test for Modules and Patterns in JavaScript', function () {
 
             expect(checkStudentList([student], jsoop.getAllStudents())).to.be.true;
         });
-        
+
         it('expect getAllStudents to return an array of the listed students (many students)', function () {
             var jsoop = Object.create(Course)
                 .init(getValidTitle(), [getValidTitle()]);
-                
+
 
             var firstname, lastname, listed = [];
             for (var i = 0; i < 100; ++i) {
@@ -411,6 +414,7 @@ describe('Test for Modules and Patterns in JavaScript', function () {
         it('expect pushExamResults to not throw if given valid students and scores', function () {
             var jsoop = Object.create(Course)
                 .init(getValidTitle(), [getValidTitle()]);
+            //console.log('heare:');
             jsoop.addStudent(getValidName() + ' ' + getValidName());
             jsoop.addStudent(getValidName() + ' ' + getValidName());
             function test() {
