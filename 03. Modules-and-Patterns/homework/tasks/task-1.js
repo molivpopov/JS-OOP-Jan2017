@@ -124,7 +124,7 @@ function solve() {
             validateID(studentID, this.students.length);
             validateID(homeworkID, this.presentations.length);
             this.students[studentID - 1].homeWork.push(homeworkID);
-            return this.presentations.length;
+            return this;
         },
 
         // FUNCTION to push exam results
