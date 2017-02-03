@@ -43,10 +43,7 @@ function solve() {
 
 			// FUNCCTION Remove
 			remove: function (product) {
-				let indexToRemove = this.products.findIndex(x =>
-					x.name === product.name &&
-					x.price === product.price &&
-					x.productType === product.productType);
+				let indexToRemove = this.products.findIndex(x => x === product);
 				if (indexToRemove === -1) {
 					throw 'have no product to delete'
 				}
@@ -70,28 +67,30 @@ function solve() {
 					{ uniqueProductTypes.push(x.productType) };
 				});
 
-				uniqueProductTypes.sort(function (a, b) { return sortString(a, b) });
+				uniqueProductTypes.sort((a, b) => sortString(a, b));
 				return uniqueProductTypes;
 			},
 
 			// Get Info
 			getInfo: function () {
 				let uniqueNames = [];
-				let quantity, ttlPrice;
+
 				this.products.forEach(x => {
 					if (!uniqueNames.some(y => y.name === x.name)) {
-						quantity = 0, ttlPrice = 0;
+						let quantity = 0, ttlPrice = 0;
+
 						this.products.forEach(z => {
 							if (z.name === x.name) {
 								quantity += 1;
 								ttlPrice += z.price;
 							}
 						});
+
 						uniqueNames.push({ name: x.name, totalPrice: ttlPrice, quantity: quantity });
 					};
 				});
 
-				uniqueNames.sort(function (a, b) { return sortString(a.name, b.name) });
+				uniqueNames.sort(((a, b) => sortString(a.name, b.name)));
 				return {
 					products: uniqueNames,
 					totalPrice: this.showCost()
