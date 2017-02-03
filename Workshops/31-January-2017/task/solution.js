@@ -94,7 +94,7 @@ function solve() {
 				uniqueNames.sort(function (a, b) { return sortString(a.name, b.name) });
 				return {
 					products: uniqueNames,
-					totalPrice: this.products.reduce(function (ttl, num) { return ttl + num.price }, 0)
+					totalPrice: this.showCost()
 				};
 			}
 		}
