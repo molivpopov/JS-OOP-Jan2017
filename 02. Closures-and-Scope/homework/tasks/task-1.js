@@ -29,15 +29,12 @@ function solve() {
 			if (value === undefined) {
 				return books;
 			}
-			var list = [];
-			if (value.category !== undefined) {
-				books.forEach(x => { if (x.category === value.category) { list.push(x) } });
-				return list;
+			if (value.category !== undefined) {		
+				return books.filter(x => x.category === value.category);
 			};
 
 			if (value.author !== undefined) {
-				books.forEach(x => { if (x.author === value.author) { list.push(x) } });
-				return list;
+				return books.filter(x => x.author === value.author);
 			};
 		}
 
