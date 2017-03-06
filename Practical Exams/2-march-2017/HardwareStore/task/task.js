@@ -154,7 +154,6 @@ function solve() {
 			return `Router - ${super.getLabel()}`
 		}
 	};
-
 	class Headphones extends Product {
 		constructor(manufacturer, model, price, quality, hasMicrophone) {
 			super(manufacturer, model, price);
@@ -197,6 +196,8 @@ function solve() {
 			this._quantitys = [];
 			this._earnedMoney = 0;
 		}
+
+		// property
 		get name() {
 			return this._name;
 		}
@@ -204,7 +205,7 @@ function solve() {
 		// methods
 		stock(product, quantity) {
 			Validator.postivInteger(quantity);
-			
+
 			if (!(product instanceof Product)) {
 				throw Error('not actual product');
 			}
@@ -223,6 +224,7 @@ function solve() {
 			Validator.postivInteger(quantity);
 
 			if (this._quantitys[productId] >= quantity) {
+
 				this._quantitys[productId] -= quantity;
 				let index = this.products.findIndex(x => x.id === productId);
 				this._earnedMoney += this.products[index].price * quantity;
@@ -245,11 +247,9 @@ function solve() {
 			let res = this.products.slice();
 
 			if (typeof (options) === 'string') {
-				let str = options;
 				res = res.filter(x =>
-					x.model.toLowerCase().includes(str) ||
-					x.manufacturer.toLowerCase().includes(str));
-				return res.map(x => { return { product: x, quantity: this._quantitys[x.id] } });
+					x.model.toLowerCase().includes(options) ||
+					x.manufacturer.toLowerCase().includes(options));
 			}
 
 			// string - search pattern
