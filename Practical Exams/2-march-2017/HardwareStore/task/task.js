@@ -204,9 +204,8 @@ function solve() {
 		// methods
 		stock(product, quantity) {
 			Validator.postivInteger(quantity);
-			if (
-				!(product instanceof Product)
-			) {
+			
+			if (!(product instanceof Product)) {
 				throw Error('not actual product');
 			}
 
