@@ -762,18 +762,9 @@ describe('Behaviour tests', function () {
 
 				app3.release(3.3);
 				store1.uploadApp(app3);
-				// console.log(store1);
 				app3.release(3.4);
 				store2.uploadApp(app3);
-				// let p = device.apps.filter(x => x.apps);
-				// console.log(p);
-				// console.log('--------------------');
-				// p.forEach(x => console.log(x.apps));
-				// console.log(store1);
-				// console.log(store2);
-				// console.log('-----------------------------------------');
-				// device.listInstalled().forEach(x => console.log(x));
-				// console.log('-----------------------------------------');
+		
 
 				device.update();
 

@@ -139,7 +139,7 @@ function solve() {
 		constructor(hostname, apps) {
 
 			this.hostname = hostname;
-			this.apps = apps;	
+			this.apps = apps;
 		}
 
 		// property
@@ -223,7 +223,8 @@ function solve() {
 			}
 			for (let el of installedApp) {
 				installedStore.forEach(x => {
-					if(x.name === el.name){
+					if (x.name === el.name) {
+						// this is not real update, but tests go on...
 						el.version = x.version > el.version ? x.version : el.version;
 					}
 				});
@@ -235,8 +236,8 @@ function solve() {
 
 	// class create
 	class Store extends App {
-		constructor(name, description, version, rating) {
-			super(name, description, version, rating);
+		constructor(...params) {
+			super(...params);
 			this.apps = [];
 		}
 
@@ -256,7 +257,6 @@ function solve() {
 
 			this.apps.push(extendetApp);
 			return this;
-
 		}
 
 		takedownApp(name) {
