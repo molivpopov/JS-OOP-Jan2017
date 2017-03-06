@@ -296,17 +296,5 @@ function solve() {
 		}
 	};
 }
-// test = solve();
-// charger = test.getCharger('HTC', 'One', 903, 5, 200);
-// console.log(charger.getLabel());
-// console.log(charger.id);
-// phone = test.getSmartPhone('HTC', 'One', 903, 5, 'Android');
-// console.log(phone.getLabel());
-// console.log(phone.id);
-// headphone = test.getHeadphones('HTC', 'One', 200, 'low', undefined);
-// console.log(headphone.getLabel());
-// console.log(headphone.id);
-// console.log(headphone.hasMicrophone);
 
-// Submit the code above this line in bgcoder.com
 module.exports = solve; // DO NOT SUBMIT THIS LINE
