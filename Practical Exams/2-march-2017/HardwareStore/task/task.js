@@ -29,8 +29,6 @@ function solve() {
 		return function () { return id += 1 };
 	};
 	let IDProduct = CreadID();
-	// let types = ['SmartPhone', 'Charger', 'Router', 'Headphones'];
-
 
 	// My classes
 	class Product {
@@ -40,6 +38,7 @@ function solve() {
 			this.price = price;
 			this._id = IDProduct();
 		}
+
 		// property
 		get manufacturer() {
 			return this._manufacturer;
@@ -65,6 +64,7 @@ function solve() {
 		get id() {
 			return this._id;
 		}
+		
 		// methods
 		getLabel() {
 			return `${this.manufacturer} ${this.model} - **${this.price}**`;
