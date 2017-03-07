@@ -4,7 +4,7 @@ function solve() {
 		string_1_n(value, n) {
 			if (typeof (value) !== 'string' ||
 				value.length < 1 || n < value.length) {
-				throw Error(`String 1-${n} Symbols`)
+				throw Error(`String 1-${n} Symbols`);
 			}
 		},
 		numberPositivNonZero(value) {
@@ -64,7 +64,7 @@ function solve() {
 		get id() {
 			return this._id;
 		}
-		
+
 		// methods
 		getLabel() {
 			return `${this.manufacturer} ${this.model} - **${this.price}**`;
@@ -95,7 +95,7 @@ function solve() {
 
 		// methods
 		getLabel() {
-			return `SmartPhone - ${super.getLabel()}`
+			return `SmartPhone - ${super.getLabel()}`;
 		}
 	};
 	class Charger extends Product {
@@ -123,7 +123,7 @@ function solve() {
 
 		// methods
 		getLabel() {
-			return `Charger - ${super.getLabel()}`
+			return `Charger - ${super.getLabel()}`;
 		}
 	};
 	class Router extends Product {
@@ -151,7 +151,7 @@ function solve() {
 
 		// methods
 		getLabel() {
-			return `Router - ${super.getLabel()}`
+			return `Router - ${super.getLabel()}`;
 		}
 	};
 	class Headphones extends Product {
@@ -185,7 +185,7 @@ function solve() {
 
 		// methods
 		getLabel() {
-			return `Headphones - ${super.getLabel()}`
+			return `Headphones - ${super.getLabel()}`;
 		}
 	};
 	class HardwareStore {
