@@ -1,15 +1,14 @@
 function solve() {
 	// commons
 	const Validator = {
-		string_1_n(value, n) {
+		stringTest(value, n) {
 			if (typeof (value) !== 'string' ||
 				value.length < 1 || n < value.length) {
-				throw Error(`String 1-${n} Symbols`);
+				throw Error('Wrong String');
 			}
 		},
 		numberPositivNonZero(value) {
-			if (typeof (value) !== 'number' ||
-				value < 1) {
+			if (typeof (value) !== 'number' || value < 1) {
 				throw Error('Postiv Non zero number')
 			}
 		},
@@ -24,11 +23,10 @@ function solve() {
 			}
 		}
 	};
-	function CreadID() {
+	IDProduct = function () {
 		let id = 0;
 		return function () { return id += 1 };
-	};
-	let IDProduct = CreadID();
+	}();
 
 	// My classes
 	class Product {
@@ -44,14 +42,14 @@ function solve() {
 			return this._manufacturer;
 		}
 		set manufacturer(manufacturer) {
-			Validator.string_1_n(manufacturer, 20);
+			Validator.stringTest(manufacturer, 20);
 			this._manufacturer = manufacturer;
 		}
 		get model() {
 			return this._model;
 		}
 		set model(model) {
-			Validator.string_1_n(model, 20);
+			Validator.stringTest(model, 20);
 			this._model = model;
 		}
 		get price() {
@@ -67,7 +65,7 @@ function solve() {
 
 		// methods
 		getLabel() {
-			return `${this.manufacturer} ${this.model} - **${this.price}**`;
+			return this.manufacturer + ' ' + this.model + ' - **' + this.price + '**';
 		}
 	};
 	class SmartPhone extends Product {
@@ -89,13 +87,13 @@ function solve() {
 			return this._operatingSystem;
 		}
 		set operatingSystem(operatingSystem) {
-			Validator.string_1_n(operatingSystem, 10);
+			Validator.stringTest(operatingSystem, 10);
 			this._operatingSystem = operatingSystem;
 		}
 
 		// methods
 		getLabel() {
-			return `SmartPhone - ${super.getLabel()}`;
+			return 'SmartPhone - ' + super.getLabel();
 		}
 	};
 	class Charger extends Product {
@@ -123,7 +121,7 @@ function solve() {
 
 		// methods
 		getLabel() {
-			return `Charger - ${super.getLabel()}`;
+			return 'Charger - ' + super.getLabel();
 		}
 	};
 	class Router extends Product {
@@ -151,7 +149,7 @@ function solve() {
 
 		// methods
 		getLabel() {
-			return `Router - ${super.getLabel()}`;
+			return 'Router - ' + super.getLabel();
 		}
 	};
 	class Headphones extends Product {
@@ -185,12 +183,12 @@ function solve() {
 
 		// methods
 		getLabel() {
-			return `Headphones - ${super.getLabel()}`;
+			return 'Headphones - ' + super.getLabel();
 		}
 	};
 	class HardwareStore {
 		constructor(name) {
-			Validator.string_1_n(name, 20);
+			Validator.stringTest(name, 20);
 			this._name = name;
 			this.products = [];
 			this._quantitys = [];
@@ -222,7 +220,11 @@ function solve() {
 
 		sell(productId, quantity) {
 			Validator.postivInteger(quantity);
-
+			// productId dont need validation, because
+			// (this._quantitys[productId] >= quantity) is false
+			// when 
+			// productId is out of range,
+			// productId is null or undefinde
 			if (this._quantitys[productId] >= quantity) {
 
 				this._quantitys[productId] -= quantity;
@@ -248,11 +250,10 @@ function solve() {
 
 			if (typeof (options) === 'string') {
 				res = res.filter(x =>
-					x.model.toLowerCase().includes(options) ||
-					x.manufacturer.toLowerCase().includes(options));
+					x.model.toLowerCase().includes(options.toLowerCase()) ||
+					x.manufacturer.toLowerCase().includes(options.toLowerCase()));
 			}
 
-			// string - search pattern
 			if (options.modelPattern) {
 				res = res.filter(x => x.model.includes(options.modelPattern));
 			}
