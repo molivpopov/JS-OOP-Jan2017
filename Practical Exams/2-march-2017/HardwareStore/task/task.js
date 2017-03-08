@@ -93,7 +93,7 @@ function solve() {
 
 		// methods
 		getLabel() {
-			return 'SmartPhone - ' + super.getLabel();
+			return  this.constructor.name + ' - ' + super.getLabel();
 		}
 	};
 	class Charger extends Product {
@@ -121,7 +121,7 @@ function solve() {
 
 		// methods
 		getLabel() {
-			return 'Charger - ' + super.getLabel();
+			return  this.constructor.name + ' - ' + super.getLabel();
 		}
 	};
 	class Router extends Product {
@@ -149,7 +149,7 @@ function solve() {
 
 		// methods
 		getLabel() {
-			return 'Router - ' + super.getLabel();
+			return this.constructor.name + ' - ' + super.getLabel();
 		}
 	};
 	class Headphones extends Product {
@@ -183,7 +183,7 @@ function solve() {
 
 		// methods
 		getLabel() {
-			return 'Headphones - ' + super.getLabel();
+			return  this.constructor.name + ' - ' + super.getLabel();
 		}
 	};
 	class HardwareStore {
